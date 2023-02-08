@@ -31,7 +31,7 @@ jobs:
         id: init
         run: terraform init
         env:
-            AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5QCUNG
+            AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5Q
             AWS_SECRET_ACCESS_KEY: 6Hviii4DtqKzAS6tml6oyqHkklq5dHm+rwOHS3xl
             AWS_DEFAULT_REGION: ap-southeast-2
       
@@ -43,13 +43,13 @@ jobs:
         id: apply
         run: terraform apply -auto-approve 
         env:
-            AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5QCUNG
+            AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5Q
             AWS_SECRET_ACCESS_KEY: 6Hviii4DtqKzAS6tml6oyqHkklq5dHm+rwOHS3xl
             AWS_DEFAULT_REGION: ap-southeast-2
       - name: Terraform Destroy
         id: destroy
         run: terraform destroy -auto-approve
         env:
-            AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5QCUNG
+            AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5Q
             AWS_SECRET_ACCESS_KEY: 6Hviii4DtqKzAS6tml6oyqHkklq5dHm+rwOHS3xl
             AWS_DEFAULT_REGION: ap-southeast-2
