@@ -11,7 +11,7 @@ provider "aws" {
 # Create a bucket
 resource "aws_s3_bucket" "example" {
 
-  bucket = "gh-js2"
+  bucket = "gh-js"
 
   tags = {
 
