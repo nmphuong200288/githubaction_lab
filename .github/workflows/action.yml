@@ -41,7 +41,7 @@ jobs:
 
       - name: Terraform Apply
         id: apply
-        run: terraform apply -auto-approve -var-file=variables.tfvars
+        run: terraform apply -auto-approve 
         env:
             AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5QCUNG
             AWS_SECRET_ACCESS_KEY: 6Hviii4DtqKzAS6tml6oyqHkklq5dHm+rwOHS3xl
