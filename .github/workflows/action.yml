@@ -1,5 +1,8 @@
 name: "Terraform"
-
+env:
+  AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+  AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+  AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
 on:
   workflow_dispatch:
     inputs:
@@ -30,10 +33,10 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
-        env:
-            AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-            AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-            AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+#         env:
+#             AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+#             AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+#             AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
       
       - name: Terraform Validate
         id: validate
@@ -42,14 +45,14 @@ jobs:
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve 
-        env:
-            AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-            AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-            AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+#         env:
+#             AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+#             AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+#             AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
       - name: Terraform Destroy
         id: destroy
         run: terraform destroy -auto-approve
-        env:
-            AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-            AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-            AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
+#         env:
+#             AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
+#             AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+#             AWS_DEFAULT_REGION: ${AWS_DEFAULT_REGION}
