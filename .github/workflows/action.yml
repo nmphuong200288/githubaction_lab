@@ -1,0 +1,54 @@
+name: "Terraform"
+
+on:
+  workflow_dispatch:
+    inputs:
+      # Working directory input from user.
+      resource:
+        type: choice
+        description: Choose the resource
+        options:
+        - name_of_dir1
+        - name_of_dir2
+      # Terraform action you want to perform
+      action:
+        description: 'Terraform Action to Perform'
+        type: choice
+        options:
+        - Terraform_apply
+        - Terraform_destroy
+
+jobs:
+  terraform_apply:
+    name: "Terraform_apply"
+    if: ${{ github.event.inputs.action == 'Terraform_apply' }}
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ github.event.inputs.resource }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+
+      - name: Terraform Init
+        id: init
+        run: terraform init
+        env:
+            AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5QCUNG
+            AWS_SECRET_ACCESS_KEY: 6Hviii4DtqKzAS6tml6oyqHkklq5dHm+rwOHS3xl
+            AWS_DEFAULT_REGION: ap-southeast-2
+      
+      - name: Terraform Validate
+        id: validate
+        run: terraform validate -no-color
+
+      - name: Terraform Apply
+        id: apply
+        run: terraform apply -auto-approve -var-file=variables.tfvars
+        env:
+            AWS_ACCESS_KEY_ID: KIA4FGBKUXBGE5QCUNG
+            AWS_SECRET_ACCESS_KEY: 6Hviii4DtqKzAS6tml6oyqHkklq5dHm+rwOHS3xl
+            AWS_DEFAULT_REGION: ap-southeast-2
