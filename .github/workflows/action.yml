@@ -17,7 +17,6 @@ on:
         options:
         - Terraform_apply
         - Terraform_destroy
-
 jobs:
   terraform_apply:
     name: "Terraform_apply"
